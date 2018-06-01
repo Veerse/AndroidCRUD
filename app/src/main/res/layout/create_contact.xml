@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/EditTextFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_centerVertical="true"
+        android:hint="First name"/>
+
+    <EditText
+        android:id="@+id/EditTextLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@id/EditTextFirstName"
+        android:hint="Last name"/>
+
+    <EditText
+        android:id="@+id/EditTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_below="@id/EditTextLastName"
+        android:inputType="number"
+        android:hint="Number"/>
+
+    <ImageButton
+        android:id="@+id/btnCreateContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/EditTextFirstName"
+        android:layout_below="@+id/EditTextNumber"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginTop="25dp"/>
+
+
+</RelativeLayout>
