@@ -1,30 +1,36 @@
 package example.nassim.contactcrud;
 
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import example.nassim.contactcrud.Model.Contact;
 
 public class MainActivity extends AppCompatActivity implements FragmentList.OnContactClickListener{
 
-    FloatingActionButton toCreate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toCreate = findViewById(R.id.btnToCreate);
-        toCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), CreateContact.class));
-            }
-        });
+        FragmentManager manager = this.getSupportFragmentManager();
+
+        if(findViewById(R.id.readPortrait) != null){
+            manager.beginTransaction()
+                    .hide(manager.findFragmentById(R.id.fragmentAbout))
+                    .show(manager.findFragmentById(R.id.fragmentList))
+                    .commit();
+        }
+
+        if(findViewById(R.id.readLandscape) != null){
+            manager.beginTransaction()
+                    .show(manager.findFragmentById(R.id.fragmentAbout))
+                    .show(manager.findFragmentById(R.id.fragmentList))
+                    .commit();
+        }
     }
 
     @Override
@@ -35,15 +41,14 @@ public class MainActivity extends AppCompatActivity implements FragmentList.OnCo
         if(fragmentAbout != null)
             fragmentAbout.setContact(c);
 
-        else{
-            FragmentAbout newFrag = new FragmentAbout();
-            newFrag.setContact(c);
+        if(findViewById(R.id.readPortrait) != null && findViewById(R.id.readLandscape) == null){
+            FragmentManager manager = this.getSupportFragmentManager();
+            FragmentTransaction f = manager.beginTransaction()
+                    .hide(manager.findFragmentById(R.id.fragmentList))
+                    .show(manager.findFragmentById(R.id.fragmentAbout));
 
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-            transaction.replace(R.id.fragmentList, newFrag);
-            transaction.addToBackStack(null);
-            transaction.commit();
+            f.addToBackStack(null);
+            f.commit();
         }
     }
 }
