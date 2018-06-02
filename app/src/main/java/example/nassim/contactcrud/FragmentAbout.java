@@ -2,6 +2,7 @@ package example.nassim.contactcrud;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,7 @@ public class FragmentAbout extends Fragment {
 
     private ImageButton btnEdit;
     private ImageButton btnDelete;
-
+    private ImageButton btnCall;
     private Contact c;
 
     @Override
@@ -34,6 +35,17 @@ public class FragmentAbout extends Fragment {
 
         btnEdit = view.findViewById(R.id.btnEdit);
         btnDelete = view.findViewById(R.id.btnDelete);
+        btnCall = view.findViewById(R.id.ibCall);
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = editNumber.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+phone));
+                startActivity(intent);
+            }
+        });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

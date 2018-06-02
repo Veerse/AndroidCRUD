@@ -31,6 +31,17 @@
         android:layout_marginRight="80dp" />
 
     <ImageButton
+        android:id="@+id/ibCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/stat_sys_phone_call"
+        android:layout_toLeftOf="@id/btnEdit"
+        android:layout_toRightOf="@id/btnDelete"
+        android:layout_below="@+id/EditContactNumber"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
         android:id="@+id/btnEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
