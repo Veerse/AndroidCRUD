@@ -38,19 +38,23 @@ public class FragmentAbout extends Fragment {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c.delete();
-                startActivity(new Intent(view.getContext(), MainActivity.class));
+                if(editLastName.length() > 0 && editFirstName.length() > 0 && editNumber.length() > 0){
+                    c.delete();
+                    startActivity(new Intent(view.getContext(), MainActivity.class));
+                }
             }
         });
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c.setFirstName(editFirstName.getText().toString());
-                c.setLastName(editLastName.getText().toString());
-                c.setNumber(Integer.parseInt(editNumber.getText().toString()));
-                c.save();
-                startActivity(new Intent(view.getContext(), MainActivity.class));
+                if(editLastName.length() > 0 && editFirstName.length() > 0 && editNumber.length() > 0){
+                    c.setFirstName(editFirstName.getText().toString());
+                    c.setLastName(editLastName.getText().toString());
+                    c.setNumber(Integer.parseInt(editNumber.getText().toString()));
+                    c.save();
+                    startActivity(new Intent(view.getContext(), MainActivity.class));
+                }
             }
         });
 
