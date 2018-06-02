@@ -73,6 +73,7 @@ public class FragmentList extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 mCallback.OnContactClick(list.get(i));
+                //adapter.notifyDataSetChanged();
             }
         });
 
