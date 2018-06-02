@@ -49,8 +49,7 @@ public class FragmentAbout extends Fragment {
                 c.setFirstName(editFirstName.getText().toString());
                 c.setLastName(editLastName.getText().toString());
                 c.setNumber(Integer.parseInt(editNumber.getText().toString()));
-                //c.update();
-                Contact.update (c);
+                c.save();
                 startActivity(new Intent(view.getContext(), MainActivity.class));
             }
         });
