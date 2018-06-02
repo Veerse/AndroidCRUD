@@ -4,10 +4,13 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/fragmentAbout">
 
+
+
     <EditText
         android:id="@+id/EditContactFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="80dp"
         android:layout_marginLeft="80dp"
         android:layout_centerHorizontal="true" />
@@ -47,5 +50,14 @@
         android:layout_below="@+id/EditContactNumber"
         android:layout_marginTop="20dp"
         app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <ImageButton
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/EditContactNumber"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@android:drawable/ic_menu_call" />
 
 </RelativeLayout>

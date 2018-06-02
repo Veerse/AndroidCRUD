@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 import example.nassim.contactcrud.Model.Contact;
 
@@ -24,8 +27,6 @@ public class CreateContact extends AppCompatActivity implements View.OnClickList
     private EditText editTextLastName;
     private EditText editTextFirstName;
     private EditText editTextNumber;
-
-    private ImageView avatar;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -45,18 +46,17 @@ public class CreateContact extends AppCompatActivity implements View.OnClickList
         btnReset.setOnClickListener(this);
         btnTakePic.setOnClickListener(this);
 
-        avatar = findViewById(R.id.imageViewAvatar);
-
     }
 
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.btnCreateContact)
             if(fieldsFilled()){
+
                 new Contact(editTextFirstName.getText().toString(),
-                            editTextLastName.getText().toString(),
-                            Integer.parseInt(editTextNumber.getText().toString())).save();
-                
+                        editTextLastName.getText().toString(),
+                        Integer.parseInt(editTextNumber.getText().toString())).save();
+
                 // Back to main after creating a contact
                 startActivity(new Intent(view.getContext(), MainActivity.class));
             }
@@ -74,7 +74,6 @@ public class CreateContact extends AppCompatActivity implements View.OnClickList
         editTextLastName.setText("");
         editTextFirstName.setText("");
         editTextNumber.setText("");
-        avatar.setImageResource(R.drawable.user);
     }
 
     private boolean fieldsFilled (){
@@ -87,7 +86,7 @@ public class CreateContact extends AppCompatActivity implements View.OnClickList
             return false;
         }
         if(editTextNumber.getText().toString().length() < 1) {
-            Toast.makeText(this, "Age required !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Phone number required !", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
@@ -105,7 +104,7 @@ public class CreateContact extends AppCompatActivity implements View.OnClickList
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            avatar.setImageBitmap(imageBitmap);
+            //avatar.setImageBitmap(imageBitmap);
         }
     }
 }
